@@ -2,6 +2,7 @@ rules:
 #自定义规则
   - DOMAIN-SUFFIX,hainanu.edu.cn,HNU
   - DOMAIN-KEYWORD,openai,PROXY
+  
 #MetaCubeX域名规则
   - RULE-SET,private_domain,DIRECT
   - RULE-SET,github_domain,PROXY
@@ -13,11 +14,14 @@ rules:
   - RULE-SET,netflix_domain,PROXY
   - RULE-SET,geolocation-!cn,PROXY
   - RULE-SET,cn_domain,DIRECT
+  #- RULE-SET,gfw_domain,PROXY
+  
 #MetaCubeX IP规则
   - RULE-SET,google_ip,PROXY,no-resolve
   - RULE-SET,telegram_ip,PROXY,no-resolve
   - RULE-SET,cn_ip,DIRECT
-  #- RULE-SET,gfw_domain,PROXY
+
+  
 #七尺宇规则
   - RULE-SET,direct1,DIRECT
   - RULE-SET,proxylite,PROXY
@@ -43,11 +47,13 @@ rule-providers:
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs" }
   geolocation-!cn: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs" }
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs" }
+  gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs" }
+  
 #MetaCubeX IP规则
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs" }
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs" }
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs" }
-  gfw_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs" }
+
 #七尺宇规则
   direct1: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/master/Direct.list" }
   proxylite: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
